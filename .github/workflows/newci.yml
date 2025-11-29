@@ -37,15 +37,29 @@ jobs:
 
       - name: Download spaCy model & NLTK data
         run: |
-          # spaCy download will be skipped if spacy isn't installed; ignore errors
-          python -m spacy download en_core_web_sm || true
+          # Try spaCy download only if spacy is importable
           python - <<'PY'
-          import nltk
-          for r in ("punkt","stopwords","wordnet","omw-1.4"):
+          try:
+              import spacy
+          except Exception:
+              print("spaCy not installed; skipping spaCy model download")
+          else:
               try:
-                  nltk.download(r)
-              except Exception:
-                  pass
+                  spacy.cli.download("en_core_web_sm")
+              except Exception as e:
+                  print("spaCy download failed (continuing):", e)
+
+          # Try NLTK downloads only if nltk is importable
+          try:
+              import nltk
+          except Exception:
+              print("nltk not installed; skipping NLTK data download")
+          else:
+              for r in ("punkt", "stopwords", "wordnet", "omw-1.4"):
+                  try:
+                      nltk.download(r)
+                  except Exception as e:
+                      print(f"Failed to download {r}: {e}")
           PY
 
       - name: Smoke test (imports)
