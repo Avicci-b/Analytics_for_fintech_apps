@@ -8,7 +8,7 @@ This repository collects, preprocesses and analyzes Google Play reviews for seve
 ### 1) Data collection (scraper)
 - Source: Google Play Store (google_play_scraper).
 - Target: ~400+ reviews per bank (3 banks).
-- Collected fields: review text, rating, date, user name/id, app id, version, thumbs up count, and metadata.
+- Collected fields: review text, rating, date, app id.
 - Scraper implementation: `scripts/scraper.py` — exposes `main()` that returns a DataFrame and writes raw CSV(s) using canonical DATA_PATHS.
 
 ### 2) Storage conventions
