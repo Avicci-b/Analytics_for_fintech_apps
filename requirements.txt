@@ -1,4 +1,4 @@
-# ...existing code...
+
 # Requirements for scraping, NLP and visualization
 requests
 beautifulsoup4
@@ -20,4 +20,4 @@ emoji
 tqdm
 jupyter
 openpyxl
-# ...existing code...
+python-dotenv
