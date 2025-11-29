@@ -45,11 +45,17 @@ jobs:
           PY
 
       - name: Smoke test (imports)
-        run: |
+        run: | 
           python - <<'PY'
-          import sys, importlib
+          import sys
+          from importlib import import_module
           pkgs = ["pandas","numpy","nltk","spacy","sklearn","matplotlib"]
-          missing = [p for p in pkgs if importlib.util.find_spec(p) is None]
+          missing = []
+          for p in pkgs:
+              try:
+                  import_module(p)
+              except Exception:
+                  missing.append(p)
           if missing:
               print("Missing packages:", missing)
               sys.exit(1)
