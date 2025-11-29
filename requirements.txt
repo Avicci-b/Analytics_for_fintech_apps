@@ -20,3 +20,4 @@ emoji
 tqdm
 jupyter
 openpyxl
+python-dotenv
