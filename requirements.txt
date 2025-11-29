@@ -1,0 +1,23 @@
+# ...existing code...
+# Requirements for scraping, NLP and visualization
+requests
+beautifulsoup4
+google_play_scraper
+pandas
+numpy
+nltk
+spacy
+scikit-learn
+gensim
+sentence-transformers
+transformers
+matplotlib
+seaborn
+plotly
+wordcloud
+langdetect
+emoji
+tqdm
+jupyter
+openpyxl
+# ...existing code...
