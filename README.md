@@ -179,3 +179,31 @@ Task 3 Completion Status
 ✅ KPIs Met: Working database connection, >1,000 reviews inserted, schema file created
 ✅ Minimum Requirements Met: Database with both tables, >400 reviews inserted, schema documented
 
+### 6) Task 4: Insights and Recommendations
+Derived actionable insights from analysis of 1,313 bank app reviews.
+
+Key Insights
+- **Drivers of Satisfaction**: Identified 2+ positive aspects per bank
+- **Pain Points**: Discovered 2+ issues per bank requiring attention  
+- **Bank Comparisons**: Comparative analysis of CBE vs BOA vs Dashen
+
+Visualizations Created
+1. Rating Distribution by Bank
+2. Sentiment Analysis Comparison
+3. Word Clouds for Positive/Negative Reviews
+4. Performance Metrics Dashboard
+
+ Recommendations
+Provided 2+ actionable recommendations per bank for app improvement.
+
+ Ethical Considerations
+Noted potential biases in review data and limitations of analysis.
+
+ Files Created
+- `notebooks/task4_insights_analysis.ipynb` - Complete analysis notebook
+- `reports/task4_final_report.md` - 10-page final report
+- Visualizations saved in notebook outputs
+
+ Task 4 Completion Status
+✅ KPIs Met: 2+ drivers/pain points per bank, clear visualizations, practical recommendations  
+✅ Minimum Requirements Met: 1 driver & pain point per bank, 2+ plots, 10-page report
