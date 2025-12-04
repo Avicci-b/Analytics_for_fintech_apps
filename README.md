@@ -31,3 +31,151 @@ Implemented in `scripts/preprocessing.py` (class `ReviewPreprocessor`):
 - Notebook: `notebooks/pre_processing_eda.ipynb`
 - Visuals include rating distributions, reviews per bank, and review length histograms.
 - Notebook config cell adds repo root to `sys.path` so `scripts` modules import reliably.
+
+### 5) PostgreSQL Database Implementation (Task 3)
+Implemented persistent storage for processed review data using PostgreSQL.
+
+#### Database Setup
+- **Database**: `bank_reviews`
+- **User**: `bank_user`
+- **Tables**: `banks` and `reviews`
+
+#### Schema Design
+```sql
+-- banks table
+CREATE TABLE banks (
+    bank_id SERIAL PRIMARY KEY,
+    bank_name VARCHAR(100) NOT NULL,
+    app_name VARCHAR(200)
+);
+
+-- reviews table  
+CREATE TABLE reviews (
+    review_id SERIAL PRIMARY KEY,
+    bank_id INTEGER REFERENCES banks(bank_id),
+    review_text TEXT NOT NULL,
+    rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+    review_date DATE NOT NULL,
+    source VARCHAR(50) DEFAULT 'Google Play Store'
+);
+
+Data Insertion (via Python notebook notebooks/task3_postgresql.ipynb):
+
+Connected to PostgreSQL using psycopg2
+
+Loaded processed CSV: data/processed/reviews_processed.csv
+
+Inserted 1,313 reviews (exceeding 400 minimum requirement)
+
+Success rate: 97.3%
+
+Verification Queries executed to ensure data integrity.
+
+Results
+Total Reviews Inserted: 1,313
+
+Reviews per Bank:
+
+Bank of Abyssinia: 441 reviews
+
+Dashen Bank: 438 reviews
+
+Commercial Bank of Ethiopia: 434 reviews
+
+Data Quality: All validation checks passed
+
+Schema Documentation: database/schema.sql
+
+Files Created
+database/schema.sql - Complete database schema
+
+notebooks/task3_postgresql.ipynb - Database implementation notebook
+
+data/processed/task3_summary.json - Database summary statistics
+
+Task 3 Completion Status
+✅ KPIs Met: Working database connection, >1,000 reviews inserted, schema file created
+✅ Minimum Requirements Met: Database with both tables, >400 reviews inserted, schema documented
+
+text
+
+## **TO UPDATE YOUR README.md:**
+
+Run this command:
+
+```bash
+# Add Task 3 section to your README.md
+cat >> README.md << 'EOF'
+
+### 5) PostgreSQL Database Implementation (Task 3)
+Implemented persistent storage for processed review data using PostgreSQL.
+
+#### Database Setup
+- **Database**: `bank_reviews`
+- **User**: `bank_user`
+- **Tables**: `banks` and `reviews`
+
+#### Schema Design
+```sql
+-- banks table
+CREATE TABLE banks (
+    bank_id SERIAL PRIMARY KEY,
+    bank_name VARCHAR(100) NOT NULL,
+    app_name VARCHAR(200)
+);
+
+-- reviews table  
+CREATE TABLE reviews (
+    review_id SERIAL PRIMARY KEY,
+    bank_id INTEGER REFERENCES banks(bank_id),
+    review_text TEXT NOT NULL,
+    rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+    review_date DATE NOT NULL,
+    source VARCHAR(50) DEFAULT 'Google Play Store'
+);
+Implementation Steps
+Database Creation (via terminal):
+
+bash
+sudo -u postgres psql
+CREATE DATABASE bank_reviews;
+CREATE USER bank_user WITH PASSWORD 'bank123';
+GRANT ALL PRIVILEGES ON DATABASE bank_reviews TO bank_user;
+Data Insertion (via Python notebook notebooks/task3_postgresql.ipynb):
+
+Connected to PostgreSQL using psycopg2
+
+Loaded processed CSV: ../data/processed/reviews_processed.csv
+
+Inserted 1,313 reviews (exceeding 400 minimum requirement)
+
+Success rate: 97.3%
+
+Verification Queries executed to ensure data integrity.
+
+Results
+Total Reviews Inserted: 1,313
+
+Reviews per Bank:
+
+Bank of Abyssinia: 441 reviews
+
+Dashen Bank: 438 reviews
+
+Commercial Bank of Ethiopia: 434 reviews
+
+Data Quality: All validation checks passed
+
+Schema Documentation: database/schema.sql
+
+Files Created
+database/schema.sql - Complete database schema
+
+notebooks/task3_postgresql.ipynb - Database implementation notebook
+
+data/processed/task3_summary.json - Database summary statistics
+
+Task 3 Completion Status
+✅ KPIs Met: Working database connection, >1,000 reviews inserted, schema file created
+✅ Minimum Requirements Met: Database with both tables, >400 reviews inserted, schema documented
+
