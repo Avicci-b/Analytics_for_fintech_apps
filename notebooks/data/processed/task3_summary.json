@@ -1,0 +1,58 @@
+{
+  "task3_completion": {
+    "timestamp": "2025-12-04T16:15:21.315778",
+    "database": "bank_reviews",
+    "user": "bank_user",
+    "total_banks": 3,
+    "total_reviews": 1313,
+    "date_range": {
+      "earliest": "2024-08-28",
+      "latest": "2025-11-28"
+    },
+    "overall_avg_rating": 3.7996953541507996
+  },
+  "banks": [
+    {
+      "bank_name": "Bank of Abyssinia",
+      "review_count": 441,
+      "avg_rating": 3.32
+    },
+    {
+      "bank_name": "Dashen Bank",
+      "review_count": 438,
+      "avg_rating": 3.99
+    },
+    {
+      "bank_name": "Commercial Bank of Ethiopia",
+      "review_count": 434,
+      "avg_rating": 4.1
+    }
+  ],
+  "ratings": [
+    {
+      "stars": 1,
+      "count": 298,
+      "percentage": 22.7
+    },
+    {
+      "stars": 2,
+      "count": 49,
+      "percentage": 3.73
+    },
+    {
+      "stars": 3,
+      "count": 70,
+      "percentage": 5.33
+    },
+    {
+      "stars": 4,
+      "count": 97,
+      "percentage": 7.39
+    },
+    {
+      "stars": 5,
+      "count": 799,
+      "percentage": 60.85
+    }
+  ]
+}
